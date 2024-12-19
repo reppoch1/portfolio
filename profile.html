@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playwrite+MX+Guides&family=Varela+Round&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cookie&family=Playwrite+MX+Guides&family=Varela+Round&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Charm:wght@400;700&family=Cookie&family=Playwrite+MX+Guides&family=Varela+Round&display=swap" rel="stylesheet">
+    <style>
+        @property --angle {
+            syntax: "<angle>";
+            initial-value: 0deg;
+            inherits: false;
+        }
+        @keyframes spin {
+            from {
+                --angle: 0deg;
+            }
+            to {
+                --angle: 360deg;
+            }
+        }
+        body {
+            font-family: "Varela Round";
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            width: 100%;
+            box-sizing: border-box;
+            background-color: #282828;
+            line-height: 1.6;
+            overflow: hidden;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        .nav {
+            background: linear-gradient(135deg, #333333, #222222);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            border-right: 1px solid rgba(255, 255, 255, 0.1);
+            position: fixed;
+            height: 100%;
+            width: 20%;
+        }
+        .nav a {
+            color: aliceblue;
+            display: block;
+            text-decoration: none;
+            padding-top: 50px;
+            padding-left: 110px;
+            transition: all 0.3s ease-in-out;
+        }
+        .nav a.active,
+        .nav a:hover {
+            color: #ff7400;
+            font-size: 1.2rem;
+        }
+        .logo{
+            padding-left: 80px;
+            padding-top: 60px;
+            position: relative;
+        }
+        .logo::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            border-bottom: 4px solid #ff7400;
+            border-left: 4px solid #ff7400;
+            left: 50px;
+            bottom: 0px;
+        }
+
+        .logo::before {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            border-top: 4px solid #ff7400;
+            border-right: 4px solid #ff7400;
+            top: 60px;
+            right: 60px;
+        }
+        .link {
+            margin-top: 70px;
+        }
+        .firstletter {
+            color: #ff7400;
+            font-size: 4rem;
+            font-family: "Cookie";
+        }
+        .second {
+            color: aliceblue;
+            font-size: 2rem;
+            font-family: "Charm";
+        }
+        .content {
+            width: 80%;
+            height: 100vh;
+            margin-left: 20%; 
+            padding: 20px;
+        }
+        .section {
+            margin-bottom: 100px;
+            padding: 20px;
+            margin-left: 20px;
+            margin-right: 20px;
+            height: 100vh;
+        }
+        .home-content {
+            display: flex;
+            align-items: center;
+            padding-left: 40px;
+            padding-top: 170px;
+        }
+        .home-content img {
+            max-width: 300px;
+            border-radius: 360px;
+        }
+        .home-text {
+            color: aliceblue;
+            margin-right: 60px;
+            background: linear-gradient(135deg, #333333, #222222);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            border-right: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 50px;
+            border-radius: 20px;
+            position: relative;
+        }
+        .home-text::after, .home-text::before, .skills-text::after, .skills-text::before {
+            --angle: 0deg;
+            content: '';
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            background-image: conic-gradient(from var(--angle),transparent 30%, #ff7400,red);
+            top: 50%;
+            left: 50%;
+            translate: -50% -50%;
+            z-index: -1;
+            padding: 3px;
+            border-radius: 20px;
+            animation: 3s spin linear infinite;
+        }
+        .home-text::before, .skills-text::before {
+            filter: blur(1.5rem);
+            opacity: 50%;
+        }
+        .hometext1 {
+            font-size: 2.5rem;
+        }
+        .name {
+            font-size: 2.5rem;
+            color: #ff7400;
+        }
+        .author1 {
+            font-size: 1.2rem;
+            color: #ff7400;
+        }
+        .text2 {
+            font-size: 1.2rem;
+        }
+        .title {
+            margin-left: 450px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+        .abt {
+            font-size: 2.5rem;
+            color: #ff7400;
+        }
+        .met {
+            font-size: 2.5rem;
+            color: aliceblue;
+        }
+        .content-about h2 {
+            color: #ff7400;
+            font-size: 1.7rem;
+        }
+        .topcontent, .bottomcontent {
+            display: flex;
+            gap: 150px;
+            text-align: center;
+            color: aliceblue;
+            margin-left: 120px;
+            padding-bottom: 30px;
+        }
+        .firstcard, .secondcard, .thirdcard, .fourthcard{
+            position: relative;
+            width: 350px;
+            height: 250px;
+            margin-top: 15px;
+            background: linear-gradient(135deg, #333333, #222222);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            border-right: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+        }
+        .firstcard::after, .firstcard::before {
+            --angle: 0deg;
+            content: '';
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            background-image: conic-gradient(#ff7400,red,#ff7400,red,#ff7400);
+            top: 50%;
+            left: 50%;
+            translate: -50% -50%;
+            z-index: -1;
+            padding: 3px;
+            border-radius: 20px;
+        }
+        .secondcard::after, .secondcard::before {
+            --angle: 0deg;
+            content: '';
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            background-image: conic-gradient(#17ff33,#fbff00,#17ff33,#fbff00,#17ff33);
+            top: 50%;
+            left: 50%;
+            translate: -50% -50%;
+            z-index: -1;
+            padding: 3px;
+            border-radius: 20px;
+        }
+        .thirdcard::after, .thirdcard::before {
+            --angle: 0deg;
+            content: '';
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            background-image: conic-gradient(#a400a6,#ff7ae9,#a400a6,#ff7ae9,#a400a6);
+            top: 50%;
+            left: 50%;
+            translate: -50% -50%;
+            z-index: -1;
+            padding: 3px;
+            border-radius: 20px;
+        }
+        .fourthcard::after, .fourthcard::before {
+            --angle: 0deg;
+            content: '';
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            background-image: conic-gradient(#0030c6,#31f7f7,#0030c6,#31f7f7,#0030c6);
+            top: 50%;
+            left: 50%;
+            translate: -50% -50%;
+            z-index: -1;
+            padding: 3px;
+            border-radius: 20px;
+        }
+        .firstcard::before, .secondcard::before, .thirdcard::before, .fourthcard::before {
+            filter: blur(1.5rem);
+            opacity: 10%;
+        }
+        .education {
+            padding-top: 40px;
+        }
+        .education img {
+            max-width: 200px;
+        }
+        .maincard{
+            position: relative;
+            width: 800px;
+            height: 420px;
+            margin-top: 40px;
+            margin-left: 150px;
+        }
+        .card {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+            transition: all 1s ease;
+        }
+        .card:hover {
+            transform: rotateY(180deg);
+        }
+        .frontcard {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            background: linear-gradient(135deg, #333333, #222222);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            border-right: 1px solid rgba(255, 255, 255, 0.1);
+            color: aliceblue;
+            text-align: center;
+            padding-top: 20px;
+            border-radius: 20px;
+        }
+        .frontcard h2 {
+            color: #ff7400;
+            font-size: 2rem;
+        }
+        .backcard {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            background: linear-gradient(135deg, #333333, #222222);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            border-right: 1px solid rgba(255, 255, 255, 0.1);
+            color: aliceblue;
+            text-align: center;
+            padding-top: 20px;
+            border-radius: 20px;
+            transform: rotateY(180deg);
+        }
+        .backcard h2 {
+            color: #ff7400;
+            font-size: 2rem;
+            
+        }
+        .skills{
+            display: flex;
+        }
+        .skills img{
+            max-width: 350px;
+            margin-right: 50px;
+            border-radius: 50px;
+        }
+        .skilllist {
+            font-size: 1rem;
+            margin: 10px 0;
+            color: aliceblue;
+        }
+        .skills {
+            display: flex;
+            align-items: center;
+            padding-left: 40px;
+            padding-top: 100px;
+        }
+        .skills-text {
+            color: aliceblue;
+            margin-right: 60px;
+            background: linear-gradient(135deg, #333333, #222222);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            border-right: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 50px;
+            border-radius: 20px;
+            position: relative;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="nav">
+        <div class="logo">
+            <span class="firstletter">C</span><span class="second">HOPPER</span>
+        </div>
+        <div class="link">
+            <a href="#home"><i class="fa-solid fa-house"></i>&nbsp;Home</a>
+            <a href="#about"><i class="fa-solid fa-user"></i>&nbsp; About</a>
+            <a href="#education"><i class="fa-solid fa-book"></i>&nbsp; Education</a>
+            <a href="#skills"><i class="fa-solid fa-star"></i>&nbsp;Skills</a>
+        </div>
+    </div>
+    <div class="content">
+        <section id="home" class="section">
+            <div class="home-content">
+                <div class="home-text">
+                    <span class="hometext1">Hello, My name is</span><span class="name"> Chopper <br></span>
+                    <span class="author1">นาย</span><span class="text2"> พิชญชัย กลัดพรหม</span>
+                    <span class="author1">รหัสนักศึกษา</span><span class="text2"> 6630200438 . . .</span>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;สวัสดีครับ ผมชื่อ ช็อปเปอร์ เว็บไซต์นี้จัดทำขึ้นเพื่อเป็นช่องทางในการแนะนำ <br>
+                        ตัวเองรวมถึงแบ่งปันข้อมูลเกี่ยวกับสิ่งที่ผมสนใจ ประสบการณ์ และเป้าหมายในอนาคต <br>
+                        ของผมซึ่งหวังว่าจะช่วยให้ทุกท่าน ไม่ว่าจะเป็นอาจารย์ เพื่อนร่วมงาน หรือบุคคลทั่วไป <br>
+                        ได้เข้าใจและรู้จักความเป็นตัวของผมมากยิ่งขึ้น ขอบคุณที่แวะเข้ามาเยี่ยมชมและใช้เวลา <br>
+                        ในการทำความรู้จักกับผมผ่านเว็บไซต์นี้ครับ ^^</p>
+                </div>
+                <img src="./image/profile1.jpg" alt="Profile Image">
+            </div>
+        </section>
+        <section id="about" class="section">
+            <div class="about">
+                <div class="title"><span class="abt">About</span><span class="met"> Me</span></div>
+                <div class="content-about">
+                    <div class="topcontent">
+                        <div class="firstcard">
+                            <h2>ความสนใจ</h2>
+                            <p>มีความสนใจด้านการเขียนโปรแกรม<br><br> พัฒนาแอปพลิเคชัน<br><br> และการออกแบบซอฟต์แวร์</p>
+                        </div>
+                        <div class="secondcard">
+                            <h2>ปัจจุบันเรียนเกี่ยวกับ</h2>
+                            <p>การเขียนโปรแกรม หรือ Coding <br><br>ภาษาต่างๆ เช่น Python, C, C++, <br><br>Java, JavaScript, HTML/CSS</p>
+                        </div>
+                    </div> 
+                    <div class="bottomcontent">
+                        <div class="thirdcard">
+                            <h2>กิจกรรมส่วนตัว</h2>
+                            <p>ชอบเล่นเกมออนไลน์กับเพื่อนๆ <br><br>/ เล่นกีต้าร์ / เล่นกีฬาต่างๆ เช่น <br><br> ฟุตซอล ว่ายน้ำ บาสเกตบอล</p>
+                        </div>
+                        <div class="fourthcard">
+                            <h2>เป้าหมายในอนาคต</h2>
+                            <ul>
+                                <li>อยากพัฒนาทักษะโปรแกรมให้เชี่ยวชาญ</li><br>
+                                <li>ทำงานในบริษัทชั้นนำ</li><br>
+                                <li>สร้างธุรกิจของตัวเองในสายเทคโนโลยี</li><br>
+                            </ul>
+                        </div>
+                    </div>  
+                </div>
+            </div>
+        </section>
+        <section id="education" class="section">
+            <div class="education">
+                <div class="title"><span class="abt">Edu</span><span class="met">cation</span></div>
+                <div class="maincard">
+                    <div class="card">
+                        <div class="frontcard">
+                            <img src="./image/Streesmutprakan_School_logo.png" alt="Profile Image">
+                            <div class="education-text">
+                                <h2>มัธยมศึกษา</h2>
+                                <p>โรงเรียนสตรีสมุทรปราการ</p>
+                            </div>
+                        </div>
+                        <div class="backcard">
+                            <img src="./image/Original2.png" alt="Profile Image">
+                            <div class="education-text">
+                                <h2>ปัจจุบัน</h2>
+                                <p>มหาวิทยาลัยเกษตรศาสตร์ วิทยาเขตศรีราชา <br><br>สาขาวิทยาการคอมพิวเตอร์</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="skills" class="section">
+            <div class="skills">
+                <img src="./image/profile.jpg" alt="Profile Image">
+                <div class="skills-text">
+                    <div class="title-skills"><span class="abt">My</span><span class="met"> Skills</span></div>
+                    <div class="skilllist">
+                        <ul>
+                            <li>ความรู้ด้านการเขียนโปรแกรม เช่น Python, Java, JavaScript, HTML/CSS, C, C++</li><br>
+                            <li>ทักษะการคิดวิเคราะห์และแก้ปัญหา</li><br>
+                            <li>เรียนรู้ไว ชอบการค้นคว้าและเรียนรู้สิ่งใหม่ๆ</li><br>
+                            <li>ทักษะการทำงานเป็นทีม</li><br>
+                            <li>ทักษะด้านดนตรี</li><br>
+                            <li>ทักษะด้านกีฬา</li> 
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+</html>
